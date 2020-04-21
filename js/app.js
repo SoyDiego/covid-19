@@ -1,4 +1,4 @@
-fetch("https://corona.lmao.ninja/all")
+fetch("https://corona.lmao.ninja/v2/all")
 	.then((response) => response.json())
 	.then((data) => {
 		let totalCases = document.getElementById("totalCasesW");
@@ -13,7 +13,7 @@ fetch("https://corona.lmao.ninja/all")
 		update.innerText = `Last updated: ` + moment(data.updated).fromNow();
 	});
 
-fetch("https://corona.lmao.ninja/countries/argentina")
+fetch("https://corona.lmao.ninja/v2/countries/argentina")
 	.then((response) => response.json())
 	.then((data) => {
 		let flag = document.getElementById("flag");
@@ -35,7 +35,7 @@ fetch("https://corona.lmao.ninja/countries/argentina")
 			`Last updated: ` + moment(data.updated).fromNow();
 	});
 
-fetch("https://corona.lmao.ninja/countries/spain")
+fetch("https://corona.lmao.ninja/v2/countries/spain")
 	.then((response) => response.json())
 	.then((data) => {
 		let flag = document.getElementById("flagES");
