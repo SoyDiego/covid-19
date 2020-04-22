@@ -1,58 +1,82 @@
-fetch("https://corona.lmao.ninja/v2/all")
-	.then((response) => response.json())
-	.then((data) => {
-		let totalCases = document.getElementById("totalCasesW");
-		let recovered = document.getElementById("recoveredW");
-		let deaths = document.getElementById("deathsW");
-		let activeCases = document.getElementById("activeW");
-		let update = document.getElementById("updateW");
-		totalCases.innerHTML = data.cases;
-		recovered.innerHTML = data.recovered;
-		deaths.innerHTML = data.deaths;
-		activeCases.innerHTML = data.active;
-		update.innerText = `Last updated: ` + moment(data.updated).fromNow();
-	});
+const init = (async () => {
+	const divWorld = document.getElementById("divWorld");
+	const divArgentina = document.getElementById("divArgentina");
+	const divSpain = document.getElementById("divSpain");
+	const loader = document.getElementById("loader");
 
-fetch("https://corona.lmao.ninja/v2/countries/argentina")
-	.then((response) => response.json())
-	.then((data) => {
-		let flag = document.getElementById("flag");
-		let totalCases = document.getElementById("totalCases");
-		let recovered = document.getElementById("recovered");
-		let deaths = document.getElementById("deaths");
-		let todayCases = document.getElementById("todayCases");
-		let todayDeaths = document.getElementById("todayDeaths");
-		let activeCases = document.getElementById("active");
-		let update = document.getElementById("update");
-		flag.setAttribute("src", data.countryInfo.flag);
-		totalCases.innerHTML = data.cases;
-		recovered.innerHTML = data.recovered;
-		deaths.innerHTML = data.deaths;
-		todayCases.innerHTML = data.todayCases;
-		todayDeaths.innerHTML = data.todayDeaths;
-		activeCases.innerHTML = data.active;
-		update.innerText =
-			`Last updated: ` + moment(data.updated).fromNow();
-	});
 
-fetch("https://corona.lmao.ninja/v2/countries/spain")
-	.then((response) => response.json())
-	.then((data) => {
-		let flag = document.getElementById("flagES");
-		let totalCases = document.getElementById("totalCasesES");
-		let recovered = document.getElementById("recoveredES");
-		let deaths = document.getElementById("deathsES");
-		let todayCases = document.getElementById("todayCasesES");
-		let todayDeaths = document.getElementById("todayDeathsES");
-		let activeCases = document.getElementById("activeES");
-		let update = document.getElementById("updateES");
-		flag.setAttribute("src", data.countryInfo.flag);
-		totalCases.innerHTML = data.cases;
-		recovered.innerHTML = data.recovered;
-		deaths.innerHTML = data.deaths;
-		todayCases.innerHTML = data.todayCases;
-		todayDeaths.innerHTML = data.todayDeaths;
-		activeCases.innerHTML = data.active;
-		update.innerText =
-			`Last updated: ` + moment(data.updated).fromNow();
-	});
+	//function to display the info 
+	const showInfo = (data, country) => {
+		let info = ` 
+			<div class="row no-gutters">
+                            <div class="col-md-3">
+                                <div class="card-body bg-primary">
+                                    <h5 class="card-title">Total Cases</h5>
+                                    <p id="totalCasesW" class="card-text">${
+																			data.cases
+																		}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card-body bg-success">
+                                    <h5 class="card-title">Recovered</h5>
+                                    <p id="recoveredW" class="card-text">${
+																			data.recovered
+																		}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card-body bg-danger">
+                                    <h5 class="card-title">Deaths</h5>
+                                    <p id="deathsW" class="card-text">${
+																			data.deaths
+																		}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="card-body bg-secondary">
+                                    <h5 class="card-title">Active</h5>
+                                    <p id="activeW" class="card-text">${
+																			data.active
+																		}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 text-center">
+								<p class="card-text"><small id="updateW" class="text-muted">
+									Last updated: ${moment(data.updated).fromNow()}
+								</small></p>
+                            </div>
+						</div>`;
+
+		if (country === "World") {
+			divWorld.innerHTML = info;
+		} else if (country === "Argentina") {
+			divArgentina.innerHTML = info;
+		} else {
+			divSpain.innerHTML = info;
+		}
+	};
+
+	await fetch("https://corona.lmao.ninja/v2/all")
+		.then((response) => response.json())
+		.then((data) => {
+			showInfo(data, "World");
+		});
+
+	await fetch("https://corona.lmao.ninja/v2/countries/argentina")
+		.then((response) => response.json())
+		.then((data) => {
+			showInfo(data, "Argentina");
+		});
+
+	await fetch("https://corona.lmao.ninja/v2/countries/spain")
+		.then((response) => response.json())
+		.then((data) => {
+			showInfo(data, "Spain");
+		});
+
+		//Hide loader
+	loader.style.display = "none";
+})();

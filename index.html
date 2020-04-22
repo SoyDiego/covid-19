@@ -8,11 +8,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <script src="js/fontawesome.js"></script>
 
+        <link rel="stylesheet" href="css/styles.css" />
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css" />
     </head>
 
     <body>
+        <div id="loader" class="loader">
+            <img src="img/loader.svg" alt="">
+        </div>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-12 text-center">
@@ -20,149 +24,36 @@
                     <hr class="bg-primary">
                 </div>
 
+
                 <!-- WORLD -->
                 <div class="col-xl-12 text-center mb-3">
                     <img class="img-fluid" src="img/world.png" alt="">
                 </div>
                 <div class="col-xl-12 col-md-6">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-3">
-                                <div class="card-body bg-primary">
-                                    <h5 class="card-title">Total Cases</h5>
-                                    <p id="totalCasesW" class="card-text">200</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card-body bg-success">
-                                    <h5 class="card-title">Recovered</h5>
-                                    <p id="recoveredW" class="card-text">200</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card-body bg-danger">
-                                    <h5 class="card-title">Deaths</h5>
-                                    <p id="deathsW" class="card-text">200</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="card-body bg-secondary">
-                                    <h5 class="card-title">Active</h5>
-                                    <p id="activeW" class="card-text">200</p>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12 text-center">
-                                <p class="card-text"><small id="updateW" class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
+                    <div id="divWorld" class="card mb-3">
+                        <!-- Here bring the content from JS -->
                     </div>
                 </div>
                 <!-- ARGENTINA -->
                 <div class="col-xl-12 text-center mb-3">
-                    <img id="flag" class="img-fluid" src="img/argentina.png" alt="" width="150">
+                    <img class="img-fluid" src="img/ar.png" alt="" width="150">
                 </div>
                 <div class="col-xl-12 col-md-6">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-2">
-                                <div class="card-body bg-primary">
-                                    <h5 class="card-title">Total Cases</h5>
-                                    <p id="totalCases" class="card-text">200</p>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card-body bg-success">
-                                    <h5 class="card-title">Recovered</h5>
-                                    <p id="recovered" class="card-text">200</p>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card-body bg-danger">
-                                    <h5 class="card-title">Deaths</h5>
-                                    <p id="deaths" class="card-text">200</p>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card-body bg-warning">
-                                    <h5 class="card-title">Today Cases</h5>
-                                    <p id="todayCases" class="card-text">200</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="card-body bg-white text-dark">
-                                    <h5 class="card-title">Today Deaths</h5>
-                                    <p id="todayDeaths" class="card-text">200</p>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="card-body bg-secondary">
-                                    <h5 class="card-title">Active</h5>
-                                    <p id="active" class="card-text">200</p>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-12 text-center">
-                                <p class="card-text"><small id="update" class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
+                    <div id="divArgentina" class="card mb-3">
+                        <!-- Here bring the content from JS -->
                     </div>
                 </div>
 
                 <!-- SPAIN -->
                 <div class="col-xl-12 text-center mb-3">
-                    <img id="flagES" class="img-fluid" src="img/spain.svg" alt="" width="150">
+                    <img class="img-fluid" src="img/es.png" alt="" width="150">
                 </div>
-                <div class="col-xl-12 col-md-6>
-                    <div class=" card mb-3">
-                    <div class="row no-gutters">
-                        <div class="col-md-2">
-                            <div class="card-body bg-primary">
-                                <h5 class="card-title">Total Cases</h5>
-                                <p id="totalCasesES" class="card-text">200</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-body bg-success">
-                                <h5 class="card-title">Recovered</h5>
-                                <p id="recoveredES" class="card-text">200</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-body bg-danger">
-                                <h5 class="card-title">Deaths</h5>
-                                <p id="deathsES" class="card-text">200</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-body bg-warning">
-                                <h5 class="card-title">Today Cases</h5>
-                                <p id="todayCasesES" class="card-text">200</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <div class="card-body bg-white text-dark">
-                                <h5 class="card-title">Today Deaths</h5>
-                                <p id="todayDeathsES" class="card-text">200</p>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card-body bg-secondary">
-                                <h5 class="card-title">Active</h5>
-                                <p id="activeES" class="card-text">200</p>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-12 text-center">
-                            <p class="card-text"><small id="updateES" class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
+                <div class="col-xl-12 col-md-6">
+                    <div id="divSpain" class=" card mb-3">
+                        <!-- Here bring the content from JS -->
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <!-- Optional JavaScript -->
